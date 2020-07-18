@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav {
+    background-color: #000000;
+}
+
+#nav ul {
+    padding: 10px;
+}
+
+#nav li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+#nav li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    margin-left: 15px;
+}
+
+#nav li a:hover {
+    color: #808080;
+}
+
+#nav li a:active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#nav .first {
+    margin-left: 30px;
+}
+
+#nav .last {
+    float: right;
+    margin-right: 15px;
+}
+
+#nav input[type=text] {
+    width: 300px;
+    padding: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+#copyright {
+    margin-top: 100px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+#login-form, #register-form {
+    width: 400px;
+    background-color: #5b6574;
+    margin: 100px auto;
+}
+
+#login-form h1, #register-form h1 {
+    text-align: center;
+    font-size: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid #000000;
+}
+
+#login-form, #register-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#login-form label, #register-form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+#login-form input[type="password"], #login-form input[type="text"], #register-form input[type="password"], #register-form input[type="text"], #register-form input[type="email"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+#login-form button[type="submit"], #register-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#login-form button[type="submit"]:hover, #register-form input[type="submit"]:hover {
+    background-color: #2868c7;
+    transition: background-color 0.2s;
+}
+
+/* #content {
+    background-color: #808080;
+    width: 1100px;
+    height: 300px;
+    float: right;
+    margin-right: 100px;
+} */
