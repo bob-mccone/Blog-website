@@ -16,11 +16,14 @@
             <li class="last"><input type="text" placeholder="Search..."></li>
         </ul>
     </div><!-- nav -->
+    
     <div id="content">
-        <div class="profile-content">
+        <div id="profile-content">
             <h1>Profile page</h1>
-            <p>Welcome back, <?=$_SESSION['name']?></p>
         </div><!-- profile-content -->
+        <div id="profile-details">
+            <p>Welcome back, <?=$_SESSION['name']?></p>
+        </div><!-- profile-details -->
     </div><!-- content -->
 
 <?php

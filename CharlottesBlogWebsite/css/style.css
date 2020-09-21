@@ -52,6 +52,43 @@ body {
     font-size: 15px;
 }
 
+#profile-details, #account-details {
+    background-color: #d6d6d6;
+    margin: 10px 20px 0 20px;
+}
+
+#profile-content, #account-content {
+    margin: 0 10px;
+    padding: 0 10px;
+}
+
+#profile-content h1, #account-content h1 {
+    font-size: 32px;
+    box-shadow: 5px 5px black;
+    border: black solid 1px;
+    padding: 10px 10px;
+    margin-top: 10px;
+}
+
+#profile-details p, #account-details p {
+    font-size: 20px;
+    padding: 10px 10px;
+    
+}
+
+table {
+    font-size: 20px;
+    padding: 10px 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.gap {
+    margin-left: 50px;
+}
+
 #copyright {
     margin-top: 100px;
 }
@@ -111,10 +148,7 @@ body {
     transition: background-color 0.2s;
 }
 
-/* #content {
-    background-color: #808080;
-    width: 1100px;
-    height: 300px;
-    float: right;
-    margin-right: 100px;
-} */
+#ARR {
+    background-color: #ffffff;
+}
+
