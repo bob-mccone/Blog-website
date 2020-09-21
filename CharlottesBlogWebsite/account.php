@@ -39,24 +39,24 @@
         </ul>
     </div><!-- nav -->
     <div id="content">
-        <div class="account-content">
+        <div id="account-content">
             <h1>Account page</h1>
-            <div id="account-details">
-                <p>Your account details are below:</p>
-                <table>
-                    <tr>
-                        <td>Username:</td>
-                        <td><?=$_SESSION['name']?></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><?=$password?></td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td><?=$email?></td>
-                    </tr>
-                </table>
-            </div><!-- account-details -->
         </div><!-- account-content -->
+        <div id="account-details">
+            <p>Your account details are below:</p>
+            <table>
+                <tr>
+                    <td class="bold">Username:</td>
+                    <td class="gap"><?=$_SESSION['name']?></td>
+                </tr>
+                <tr>
+                    <td class="bold">Password:</td>
+                    <td class="gap"><?=$password?></td>
+                </tr>
+                <tr>
+                    <td class="bold">Email:</td>
+                    <td class="gap"><?=$email?></td>
+                </tr>
+            </table>
+        </div><!-- account-details -->
     </div><!-- content -->
