@@ -1,17 +1,13 @@
 <?php
-    // We need to use sessions, so you should always start sessions using 
-    // the below code
-    session_start();
-
-    // If the user is not logged in, redirect them to the login page
-    if (!isset($_SESSION['loggedin'])) {
-        header('Location: login.php');
-        exit;
-    }
     define("TITLE", "Profile | Charlotte's blog");
-    include("includes/header.php");
+    include 'includes/header.php';
+    include 'includes/main.php';
+    check_loggedin($con);
 ?>
             <li class="last"><a href="logout.php">Logout</a></li>
+            <?php if ($_SESSION['role'] == 'Admin'): ?>
+            <li class="last"><a href="admin/index.php" target="_blank">Admin</a></li>
+            <?php endif; ?>
             <li class="last"><a href="account.php">Account</a></li>
             <li class="last"><input type="text" placeholder="Search..."></li>
         </ul>

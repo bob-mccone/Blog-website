@@ -1,6 +1,6 @@
 <?php
     define("TITLE", "Home | Charlotte's Blog");
-    include('includes/header.php');
+    include 'includes/header.php';
 ?>
 
             <li class="last"><a href="signup.php">Sign up</a></li>
