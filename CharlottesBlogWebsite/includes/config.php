@@ -7,7 +7,7 @@ define('db_user', 'root');
 // Database password
 define('db_pass', 'mysql');
 // Database name
-define('db_name', 'phplogin');
+define('db_name', 'charlottesblog');
 // Database charset, change this only if utf8 is not supported by your language
 define('db-charset', 'utf8');
 
