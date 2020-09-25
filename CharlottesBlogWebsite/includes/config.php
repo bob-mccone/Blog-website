@@ -9,7 +9,7 @@ define('db_pass', 'mysql');
 // Database name
 define('db_name', 'charlottesblog');
 // Database charset, change this only if utf8 is not supported by your language
-define('db-charset', 'utf8');
+define('db_charset', 'utf8');
 
 // Email activation variables
 // Account activation required?

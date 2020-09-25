@@ -15,7 +15,7 @@
     // Also check if they are "remembered"
     if (isset($_COOKIE['remember_me']) && !empty($_COOKIE['remember_me'])) {
         // If the remember me cookie matches one in the database then we can update the session variables
-        $stmt = $con->prepare('SELECT id, username, role FROM accounts WHERE remember_me = ?');
+        $stmt = $con->prepare('SELECT id, username, role FROM user WHERE remember_me = ?');
         $stmt->bind_param('s', $_COOKIE['remember_me']);
         $stmt->execute();
         $stmt->store_result();
@@ -31,6 +31,8 @@
             $_SESSION['role'] = $role;
             header('Location: profile.php');
             exit;
+        } else {
+            echo 'Incorrect username and/or password combination';
         }
     }
 ?>
@@ -54,6 +56,8 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <!-- Remember me label -->
                 <label for="rememberme">Remember Me</label>
+                <!-- Message -->
+                <div class="msg"></div>
                 <!-- Submit button -->
                 <button type="submit">Login</button>
             </form><!-- form -->
