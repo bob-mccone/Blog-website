@@ -17,11 +17,11 @@ if (mysqli_connect_errno()) {
 mysqli_set_charset($con, db_charset);
 
 // The below function will check if the user is logged-in and also check the remember me cookie
-function check_loggedin($con, $redirect_file = '../login.php') {
+function check_loggedin($con, $redirect_file = 'login.php') {
     // Check for remember me cookie variable and loggedin session variable
     if (isset($_COOKIE['remember_me']) && !empty($_COOKIE['remember_me']) && !isset($_SESSION['loggedin'])) {
         // If the remember me cookie matches one in the database then we can update the session variables.
-        $stmt = $con->prepare('SELECT id, username, role FROM accounts WHERE remember_me = ?');
+        $stmt = $con->prepare('SELECT id, username, role FROM user WHERE remember_me = ?');
         $stmt->bind_param('s', $_COOKIE['remember_me']);
         $stmt->execute();
         $stmt->store_result();

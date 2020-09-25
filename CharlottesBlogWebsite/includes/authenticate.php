@@ -8,7 +8,7 @@
     }
 
     // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-    $stmt = $con->prepare('SELECT id, password, remember_me, activation_code, role FROM accounts WHERE username = ?');
+    $stmt = $con->prepare('SELECT id, password, remember_me, activation_code, role FROM user WHERE username = ?');
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
@@ -47,13 +47,14 @@
                     $days = 7;
                     setcookie('remember_me', $cookiehash, (int)(time()+60*60*24*$days));
                     // Update the remember_me field in the accounts table
-                    $stmt = $con->prepare('UPDATE accounts SET remember_me = ? WHERE id = ?');
+                    $stmt = $con->prepare('UPDATE user SET remember_me = ? WHERE id = ?');
                     $stmt->bind_param('si', $cookiehash, $id);
                     $stmt->execute();
                     $stmt->close();
                 }
-                // This is to do with the login/register pop up form, if not having the pop up remove/comment this line
-                // echo 'Success'; // Do not change this line as it will be used to check with the AJAX code
+                // Once logged in, send user to their profile page
+                header('Location: ../profile.php');
+                exit;
             }
         } else {
             echo 'Incorrect username and/or password combination';
