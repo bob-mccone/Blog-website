@@ -98,6 +98,10 @@ table {
 }
 
 #login-form, #register-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
     width: 400px;
     background-color: #5b6574;
     margin: 100px auto;
@@ -111,10 +115,7 @@ table {
 }
 
 #login-form, #register-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 0;
+    
 }
 
 #login-form label, #register-form label {

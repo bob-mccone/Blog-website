@@ -63,22 +63,6 @@
             </form><!-- form -->
         </div><!-- login-form -->
     </div><!-- content -->
-    <!-- <script>
-        document.querySelector(".login form").onsubmit = function(event) {
-            event.preventDefault();
-            var form_data = new FormData(document.querySelector(".login form"));
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", document.querySelector(".login form").action, true);
-            xhr.onload = function () {
-                if (this.responseText.toLowerCase().indexOf("success") !== -1) {
-                    window.location.href = "profile.php";
-                } else {
-                    document.querySelector(".msg").innerHTML = this.responseText;
-                }
-            };
-            xhr.send(form_data);
-        };
-    </script> -->
 <?php
     include('includes/footer.php');
 ?>
