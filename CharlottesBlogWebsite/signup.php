@@ -1,6 +1,6 @@
 <?php
     define("TITLE", "Sign up | Charlotte's Blog");
-    include('includes/header.php');
+    include 'includes/header.php';
 ?>
             <li class="last"><a href="login.php">Login</a></li>
             <li class="last"><input type="text" placeholder="Search..."></li>
@@ -14,6 +14,8 @@
                 <input type="text" name="username" placeholder="Enter your username" id="username" required>
                 <label for="password"><b>Password</b></label>
                 <input type="password" name="password" placeholder="Enter your password" id="password" required>
+                <label for="confirm_password"><b>Confirm Password</b></label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password" required>
                 <label for="email"><b>Email</b></label>
                 <input type="email" name="email" placeholder="Enter your email" id="email" required>
                 <input type="submit" value="Register">
