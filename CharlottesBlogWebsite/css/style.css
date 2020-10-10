@@ -52,17 +52,21 @@ body {
     font-size: 15px;
 }
 
-#profile-details, #account-details {
+#profile-details, #account-details, #edit-details {
     background-color: #d6d6d6;
-    margin: 10px 20px 0 20px;
+    margin: 10px 20px;
 }
 
-#profile-content, #account-content {
+#edit-details {
+    margin: 10px 0;
+}
+
+#profile-content, #account-content, #edit-content {
     margin: 0 10px;
     padding: 0 10px;
 }
 
-#profile-content h1, #account-content h1 {
+#profile-content h1, #account-content h1, #edit-content h1 {
     font-size: 32px;
     box-shadow: 5px 5px black;
     border: black solid 1px;
@@ -70,10 +74,19 @@ body {
     margin-top: 10px;
 }
 
-#profile-details p, #account-details p {
+#profile-details p, #account-details p, #edit-details label {
     font-size: 20px;
     padding: 10px 10px;
-    
+}
+
+#edit-details form label {
+    display: block;
+}
+
+#edit-details form input[type="password"], #edit-details form input[type="email"] {
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 10px 10px;
 }
 
 table {
@@ -114,8 +127,8 @@ table {
     border-bottom: 1px solid #000000;
 }
 
-#login-form, #register-form {
-    
+.msg {
+    text-align: center;
 }
 
 #login-form label, #register-form label {
@@ -149,7 +162,7 @@ table {
     transition: background-color 0.2s;
 }
 
-#account-details .general-btn {
+#account-details .general-btn, #edit-details .general-btn {
     display: inline-block;
     background-color: #2868c7;
     font-size: 20px;
@@ -158,9 +171,22 @@ table {
     width: fit-content;
     text-decoration: none;
     color: #ffffff;
+    border: 1px solid #000000;
+    /* box-shadow: 4px 5px #0e4392; */
+    border-width: 0 4px 4px 0;
+    border-color: transparent #0e4392 #062e69 transparent;
 }
 
-#ARR {
-    background-color: #ffffff;
+.general-btn:hover {
+    cursor: pointer;
 }
 
+.general-btn:active {
+    /* box-shadow: 1px 2px #06285c; */
+    transform: translateY(3px);
+}
+
+#edit-details .general-btn {
+    padding: 10px 30px;
+    margin: 10px 10px;
+}

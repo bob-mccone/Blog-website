@@ -32,7 +32,7 @@
         }
         if (empty($msg)) {
             // Check if new username or email already exists in database
-            $stmt = $con->prepare('SELECT * FROM accounts WHERE (username = ? OR email = ?) AND username != ? AND email != ?');
+            $stmt = $con->prepare('SELECT * FROM user WHERE (username = ? OR email = ?) AND username != ? AND email != ?');
             $stmt->bind_param('ssss', $_POST['username'], $_POST['email'], $_SESSION['name'], $email);
             $stmt->execute();
             $stmt->store_result();
@@ -42,7 +42,7 @@
                 // No errors occured, update the account...
                 $stmt->close();
                 $uniqid = account_activation && $email != $_POST['email'] ? uniqid() : $activation_code;
-                $stmt = $con->prepare('UPDATE accounts SET username = ?, password = ?, email = ?, activation_code = ? WHERE id = ?');
+                $stmt = $con->prepare('UPDATE user SET username = ?, password = ?, email = ?, activation_code = ? WHERE id = ?');
                 // WE do not want to expose passwords in our database. so hash the password and use password_verify when a user logs in
                 $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : $password;
                 $stmt->bind_param('ssssi', $_POST['username'], $password, $_POST['email'], $uniqid, $_SESSION['id']);
@@ -99,20 +99,21 @@
         </div><!-- account-details -->
     </div><!-- content -->
     <?php elseif ($_GET['action'] == 'edit'): ?>
-    <div class="edit-content">
+    <div id="edit-content">
         <h1>Edit profile details</h1>
         <div id="edit-details">
             <form action="account.php?action=edit" method="post">
-                <label for="username">Username:</label>
+                <label for="username">Username</label>
                 <label for="username_value"><?=$_SESSION['name']?></label>
-                <label for="password">Password:</label>
+                <label for="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="Password">
-                <label for="confirm_password">Confirm Password:</label>
+                <label for="confirm_password">Confirm Password</label>
                 <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
-                <label for="email">Email:</label>
+                <label for="email">Email</label>
                 <input type="email" value="<?=$email?>" name="email" id="email" placeholder="Email">
                 <br>
                 <input class="general-btn" type="submit" value="Save">
+                <input class="general-btn" type="submit" formaction="account.php" value="Cancel">
                 <p><?=$msg?></p>
             </form>
         </div><!-- edit-details -->

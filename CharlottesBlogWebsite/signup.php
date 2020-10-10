@@ -18,10 +18,39 @@
                 <input type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password" required>
                 <label for="email"><b>Email</b></label>
                 <input type="email" name="email" placeholder="Enter your email" id="email" required>
+                
                 <input type="submit" value="Register">
             </form>
         </div><!-- register_form -->
+        <div class="msg"></div>
     </div><!-- content -->
+    <script>
+        document.querySelector("#register\-form form").onsubmit = function(event) {
+            event.preventDefault();
+            var form_data = new FormData(document.querySelector("#register\-form form"));
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", document.querySelector("#register\-form form").action, true);
+            xhr.onload = function () {
+                if (this.responseText.toLowerCase().indexOf("success") !== -1) {
+                    window.location.href = "profile.php";
+                } else {
+                    document.querySelector(".msg").innerHTML = this.responseText;
+                }
+            };
+            xhr.send(form_data);
+        };
+        // var form = document.querySelector('#register\-form form');
+        // form.onSubmit = function(event) {
+        //     event.preventDefault();
+        //     var form_data = new FormData(form);
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('POST', form.action, true);
+        //     xhr.onload = function () {
+        //         document.querySelector('.msg').innerHTML = this.responseText;
+        //     };
+        //     xhr.send(form_data);
+        // };
+    </script>
 
 <?php
     include('includes/footer.php');

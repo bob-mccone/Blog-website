@@ -1,6 +1,7 @@
 <?php
     define("TITLE", "Home | Charlotte's Blog");
     include 'includes/header.php';
+    include 'includes/main.php';
 ?>
             <?php if (!isset($_SESSION['loggedin'])): ?>
                 <li class="last"><a href="signup.php">Sign up</a></li>
@@ -12,6 +13,7 @@
                     <li class="last"><a href="admin/index.php" target="_blank">Admin</a></li>
                 <?php endif; ?>
                 <li class="last"><a href="account.php">Account</a></li>
+                <li class="last"><a href="profile.php"><?=$_SESSION['name']?></a></li>
                 <li class="last"><input type="text" placeholder="Search..."></li>
             <?php endif; ?>
         </ul>
