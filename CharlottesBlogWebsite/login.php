@@ -56,13 +56,30 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <!-- Remember me label -->
                 <label for="rememberme">Remember Me</label>
-                <!-- Message -->
-                <div class="msg"></div>
+                
                 <!-- Submit button -->
                 <button type="submit">Login</button>
             </form><!-- form -->
         </div><!-- login-form -->
+        <!-- Message -->
+        <div class="msg"></div>
     </div><!-- content -->
+    <script>
+        document.querySelector("#login\-form form").onsubmit = function(event) {
+            event.preventDefault();
+            var form_data = new FormData(document.querySelector("#login\-form form"));
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", document.querySelector("#login\-form form").action, true);
+            xhr.onload = function () {
+                if (this.responseText.toLowerCase().indexOf("success") !== -1) {
+                    window.location.href = "profile.php";
+                } else {
+                    document.querySelector(".msg").innerHTML = this.responseText;
+                }
+            };
+            xhr.send(form_data);
+        };
+    </script>
 <?php
     include('includes/footer.php');
 ?>

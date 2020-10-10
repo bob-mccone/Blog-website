@@ -1,5 +1,4 @@
 <?php
-
 // The main file contains the database connection, session initializing, and functions, other PHP files will depend on this file.
 // Include the configuration file
 include_once 'config.php';
