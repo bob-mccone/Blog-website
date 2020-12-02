@@ -13,7 +13,8 @@
     <body>
         <div id="nav">
             <ul>
-                <li class="first" class="active"><a href="index.php">Home</a></li>
+                <li class="first"><a href="index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="testimonies.php">Testimonies</a></li>
-                <li><a href="posts.php">Posts</a></li>
+                <li><a href="blog-post.php">Posts</a></li>
+                
