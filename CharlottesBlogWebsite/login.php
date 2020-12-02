@@ -4,6 +4,7 @@
     // Note: Doesn't need () as it is not a function
     include 'includes/header.php';
     include 'includes/main.php';
+    include 'includes/nav.php';
 
     // No need for the user to see the login form if they are logged in so redirect them to the profile page
     if (isset($_SESSION['loggedin'])) {
@@ -36,8 +37,7 @@
         }
     }
 ?>
-            <li class="last"><a href="signup.php">Sign up</a></li>
-            <li class="last"><input type="text" placeholder="Search..."></li>
+            
         </ul>
     </div><!-- nav -->
     <div id="content">
@@ -56,7 +56,6 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <!-- Remember me label -->
                 <label for="rememberme">Remember Me</label>
-                
                 <!-- Submit button -->
                 <button type="submit">Login</button>
             </form><!-- form -->
