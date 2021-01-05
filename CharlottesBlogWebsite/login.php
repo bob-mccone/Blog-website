@@ -36,6 +36,8 @@
             echo 'Incorrect username and/or password combination';
         }
     }
+    // Creates a random token, prevents cross-site request forgery attacks
+    $_SESSION['token'] = md5(uniqid(rand(), true));
 ?>
             
         </ul>
@@ -62,6 +64,8 @@
                 <button type="submit">Login</button>
             </form><!-- form -->
         </div><!-- login-form -->
+        <!-- Inputs a hidden token for cross-site request forgery -->
+        <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
         <!-- Message -->
         <div class="msg"></div>
     </div><!-- content -->
