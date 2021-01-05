@@ -56,6 +56,8 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <!-- Remember me label -->
                 <label for="rememberme">Remember Me</label>
+                <!-- Remember me -->
+                <a href="forgotpassword.php">Forgot Password?</a>
                 <!-- Submit button -->
                 <button type="submit">Login</button>
             </form><!-- form -->
@@ -80,5 +82,5 @@
         };
     </script>
 <?php
-    include('includes/footer.php');
+    include 'includes/footer.php';
 ?>

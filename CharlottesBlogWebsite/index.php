@@ -9,6 +9,8 @@
     </div><!-- nav -->
     <div id="content">
 
+    </div><!-- content -->
+
 <?php
-    include('includes/footer.php');
+    include 'includes/footer.php';
 ?>
