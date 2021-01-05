@@ -1,5 +1,8 @@
 <?php
     include 'main.php';
+    if (!isset($_POST['token']) || $_POST['token'] != $_SESSION['token']) {
+        exit('Incorrect token provided');
+    }
 
     // Now we check if the data from the login form was submitted, isset() will check if the data exists.
     if (!isset($_POST['username'], $_POST['password'])) {
