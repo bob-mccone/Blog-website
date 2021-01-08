@@ -54,4 +54,35 @@ function send_activation_email($email, $code) {
     $email_template = str_replace('%link%', $activate_link, file_get_contents('activation-email-template.php'));
     mail($email, $subject, $email_template, $headers, '-f ' . mail_from);
 }
+
+// Brute force protection
+function loginAttempts($con, $update = true) {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $now = date('Y-m-d H:i:s');
+    if ($update) {
+        $stmt = $con->prepare('INSERT INTO login_attempts (ip_address, `date`) VALUES (?,?) ON DUPLICATE KEY UPDATE attempts_left = attempts_left - 1, `date` = VALUES(`date`)');
+        $stmt->bind_param('ss', $ip, $now);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    $stmt = $con->prepare('SELECT * FROM login_attempts WHERE ip_address = ?');
+    $stmt->bind_param('s', $ip);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $login_attempts = $result->fetch_array(MYSQLI_ASSOC);
+    $stmt->close();
+    if ($login_attempts) {
+        // The user can try to login after 1 day, change the "+1 day" if you want to increase/decrease this date
+        $expire = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($login_attempts['date'])));
+        if ($now > $expire) {
+            $stmt = $con->prepare('DELETE FROM login_attempts WHERE ip_address = ?');
+            $stmt->bind_param('s', $ip);
+            $stmt->execute();
+            $stmt->close();
+            $login_attempts = array();
+        }
+    }
+    return $login_attempts;
+}
 ?>
