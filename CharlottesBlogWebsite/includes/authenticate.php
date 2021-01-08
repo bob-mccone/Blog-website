@@ -1,14 +1,24 @@
 <?php
     include 'main.php';
-    if (!isset($_POST['token']) || $_POST['token'] != $_SESSION['token']) {
-        exit('Incorrect token provided');
+    
+    // Brute force protection
+    $login_attempts = loginAttempts($con, FALSE);
+    if ($login_attempts && $login_attempts['attempts_left'] <=0) {
+        exit('You cannot login right now please try again later');
     }
+    
+    // CSRF protection
+    // if (!isset($_POST['token']) || $_POST['token'] != $_SESSION['token']) {
+    //     exit('Incorrect token provided');
+    // }
 
     // Now we check if the data from the login form was submitted, isset() will check if the data exists.
     if (!isset($_POST['username'], $_POST['password'])) {
+        $login_attempts = loginAttempts($con);
         // Could not get the data that should have been sent.
         exit('Please fill both the username and password fields!');
     }
+    
 
     // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
     $stmt = $con->prepare('SELECT id, password, remember_me, activation_code, role FROM user WHERE username = ?');
@@ -58,9 +68,13 @@
                 echo 'Success'; // Do not change this line as it will be used to check with the AJAX code
             }
         } else {
-            echo 'Incorrect username and/or password combination';
+            $login_attempts = loginAttempts($con, TRUE);
+            echo 'Incorrect username and/or password combination, you have ' . $login_attempts['attempts_left'] . ' attempts remaining';
+            // $login_attempts['attempts_left'] -1;
         }
     } else {
-        echo 'Incorrect username and/or password combination';
+        $login_attempts = loginAttempts($con, TRUE);
+        echo 'Incorrect username and/or password combination, you have ' . $login_attempts['attemps_left'] . ' attempts remaining';
+        // $login_attempts['attempts_left'] -1;
     }
 ?>
